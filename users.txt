@@ -1,0 +1,25 @@
+{
+    "name": "Adriana Ramirez",
+    "email": "adriana@hotmail.com",
+    "password": "soyAdriana.10"
+}
+{
+    "name": "Jose Mavarez",
+    "email": "josemmr11@hotmail.com",
+    "password": "jose.3011"
+}
+{
+    "name": "Misael Reverol",
+    "email": "misa24jr@gmail.com",
+    "password": "misa.1015"
+}
+{
+    "name": "Usuari Odeprueba",
+    "email": "usuariodeprueba@gmail.com",
+    "password": "12345678"
+}
+{
+    "name": "Otrousu Ariodeprueba",
+    "email": "otrousuario@gmail.com",
+    "password": "123456789"
+}

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import authMiddleware from "../middlewares/authMiddleware.js";
-import CommentController from "../controllers/CommentController.js";
+import CommentController from "../controllers/commentController.js";
 
 const commentRouter = Router();
 

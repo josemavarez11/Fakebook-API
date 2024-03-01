@@ -40,7 +40,7 @@ try {
      * @const
      * @type {number}
      */
-    const PORT = process.env.SERVER_PORT
+    const PORT = process.env.PORT
 
     // Start the server and show a message in the console.
     app.listen(PORT, () => console.log(`API started at http://localhost:${PORT}`));

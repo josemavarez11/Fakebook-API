@@ -33,3 +33,8 @@
     "email": "leomessi@gmail.com",
     "password": "Argentina.10"
 }
+{
+    "name": "Harry Potter",
+    "email": "harrypotter@gmail.com",
+    "password": "harrypotter.8"
+}

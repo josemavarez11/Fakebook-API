@@ -23,3 +23,13 @@
     "email": "otrousuario@gmail.com",
     "password": "123456789"
 }
+{
+    "name": "Michael Jordan",
+    "email": "michaeljordan@hotmail.com",
+    "password": "michael.23"
+}
+{
+    "name": "Lionel Messi",
+    "email": "leomessi@gmail.com",
+    "password": "Argentina.10"
+}

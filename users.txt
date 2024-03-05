@@ -4,9 +4,9 @@
     "password": "soyAdriana.10"
 }
 {
-    "name": "Jose Mavarez",
-    "email": "josemmr11@hotmail.com",
-    "password": "jose.3011"
+    "name": "jose mavarez",
+    "email": "josemmr311@gmail.com",
+    "password": "jose.301"
 }
 {
     "name": "Misael Reverol",

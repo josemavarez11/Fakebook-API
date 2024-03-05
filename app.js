@@ -43,7 +43,7 @@ try {
     const PORT = process.env.PORT
 
     // Start the server and show a message in the console.
-    app.listen(PORT, () => console.log(`API started at http://localhost:${PORT}`));
+    app.listen(PORT, () => console.log(`API started successfully`));
 } catch (error) {
     console.log(`API crashed: ${error.message}`);
 }

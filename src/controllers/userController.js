@@ -132,6 +132,24 @@ class UserController {
             return res.status(500).json({ message: error.message });
         }
     }
+
+    static async getNameAndEmail(req, res) {
+        const id = req.user._id;
+
+        if(!id) return res.status(400).json({ message: "Id is required to get a user's name and email." });
+
+        try {
+            const user = await User.findById(id);
+            if (!user) return res.status(404).json({ message: "User not found." });
+
+            res.status(200).json({
+                name: user.name,
+                email: user.email
+            });
+        } catch (error) {
+            return res.status(500).json({ message: error.message });    
+        }
+    }
 }
 
 export default UserController;

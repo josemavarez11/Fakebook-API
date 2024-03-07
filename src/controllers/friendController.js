@@ -86,6 +86,48 @@ class FriendController {
             return res.status(500).json({ message: error.message });
         }
     }
+
+    static async deleteFriendship(req, res) {
+        const id = req.user._id;
+        const { friend } = req.body;
+
+        if(!id) return res.status(400).json({ message: "Id is required to delete a friend." });
+        if(!friend) return res.status(400).json({ message: "Friend id is required to delete a friend." });
+
+        try {
+            const user = await User.findById(id);
+            if (!user) return res.status(404).json({ message: "User not found." });
+
+            const friendship = await Friend.findOne({ $or: [{ applicant: id, requested: friend }, { applicant: friend, requested: id }], accepted: true });
+            if (!friendship) return res.status(404).json({ message: "Friendship not found." });
+
+            await friendship.delete();
+
+            return res.status(200).json({ message: "Friendship deleted successfully." });
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+    }
+
+    static async existFriendship(req, res) {
+        const id = req.user._id;
+        const { friend } = req.params;
+
+        if(!id) return res.status(400).json({ message: "Id is required to check if a friendship exists." });
+        if(!friend) return res.status(400).json({ message: "Friend id is required to check if a friendship exists." });
+
+        try {
+            const user = await User.findById(id);
+            if (!user) return res.status(404).json({ message: "User not found." });
+
+            const friendship = await Friend.findOne({ $or: [{ applicant: id, requested: friend }, { applicant: friend, requested: id }], accepted: true });
+            if (!friendship) return res.status(200).send(false);
+
+            return res.status(200).send(true);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+    }
 }
 
 export default FriendController;

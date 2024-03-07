@@ -37,7 +37,7 @@ class AuthController {
             const passwordMatch = await bcrypt.compare(password, user.password);
             if (!passwordMatch) return res.status(401).json({ message: 'Incorrect password.' });
 
-            const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
             console.log(`${user.email} has logged in.`);
             return res.status(200).json({ token });

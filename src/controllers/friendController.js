@@ -45,13 +45,13 @@ class FriendController {
             const friendRequest = await Friend.findOne({ applicant, requested: id });
             if (!friendRequest) return res.status(404).json({ message: "Friend request not found." });
 
-            friendRequest.accepted = answer;
-            await friendRequest.save();
-
-            if (!friendRequest.accepted) {
+            if (answer === false) {
                 await friendRequest.delete();
                 return res.status(200).json({ message: "Friend request declined successfully." });
             }
+            
+            friendRequest.accepted = true;
+            await friendRequest.save();
 
             return res.status(200).json({ message: "Friend request accepted successfully." });
         } catch (error) {

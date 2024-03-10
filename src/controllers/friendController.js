@@ -37,7 +37,6 @@ class FriendController {
 
         if(!id) return res.status(400).json({ message: "Id is required to answer a friend request." });
         if(!applicant) return res.status(400).json({ message: "Applicant is required to answer a friend request." });
-        if(!answer) return res.status(400).json({ message: "New status is required to answer a friend request." });
 
         try {
             const user = await User.findById(id);
@@ -49,7 +48,12 @@ class FriendController {
             friendRequest.accepted = answer;
             await friendRequest.save();
 
-            return res.status(200).json({ message: "Friend request answered successfully." });
+            if (!friendRequest.accepted) {
+                await friendRequest.delete();
+                return res.status(200).json({ message: "Friend request declined successfully." });
+            }
+
+            return res.status(200).json({ message: "Friend request accepted successfully." });
         } catch (error) {
             return res.status(500).json({ message: error.message });
         }

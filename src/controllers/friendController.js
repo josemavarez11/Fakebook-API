@@ -46,7 +46,7 @@ class FriendController {
             if (!friendRequest) return res.status(404).json({ message: "Friend request not found." });
 
             if (answer === false) {
-                await friendRequest.delete();
+                await friendRequest.deleteOne();
                 return res.status(200).json({ message: "Friend request declined successfully." });
             }
             

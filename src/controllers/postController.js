@@ -146,7 +146,7 @@ class PostController {
         }
     }
 
-    static async getByFriends(req, res) { // potential bug here
+    static async getByFriends(req, res) {
         const id = req.user._id;
 
         if(!id) return res.status(400).json({ message: "Id is required to get posts by friends." });
@@ -161,8 +161,7 @@ class PostController {
             });
 
             const friendsIds = friendships.map(friendship => {
-                return friendship.applicant === id ? friendship.applicant : friendship.requested;
-                //potential bug here.
+                return friendship.applicant.toString() === id.toString() ? friendship.requested.toString() : friendship.applicant.toString();
             });
 
             const friendsPosts = await Post.find({ user: { $in: friendsIds }, deleted: false })

@@ -224,6 +224,33 @@ class PostController {
             return res.status(500).json({ message: error.message });
         }
     }
+
+    static async getAllByUserId(req, res) {
+        const { id } = req.body
+
+        if(!id) return res.status(400).json({ message: "Id is required to get all posts." });
+
+        try {
+            const user = await User.findById(id);
+            if (!user) return res.status(404).json({ message: "User not found." });
+
+            const posts = await Post.find({ user: id, deleted: false });
+
+            const formattedPosts = posts.map(post => {
+                return {
+                    _id: post._id,
+                    body: post.body,
+                    images: post.images,
+                    createdAt: post.createdAt,
+                    updatedAt: post.updatedAt
+                }
+            });
+
+            res.status(200).json({ posts: formattedPosts });
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+    }
 }
 
 export default PostController;

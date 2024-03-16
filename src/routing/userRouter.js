@@ -10,5 +10,6 @@ userRouter.put("/updateName", authMiddleware, UserController.updateName);
 userRouter.put("/updateEmail", authMiddleware, UserController.updateEmail);
 userRouter.delete("/delete", authMiddleware, UserController.delete);
 userRouter.get("/getNameAndEmail", authMiddleware, UserController.getNameAndEmail);
+userRouter.post("/getNameById", authMiddleware, UserController.getNameById);
 
 export default userRouter;

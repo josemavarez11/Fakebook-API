@@ -150,6 +150,21 @@ class UserController {
             return res.status(500).json({ message: error.message });    
         }
     }
+
+    static async getNameById(req, res) {
+        const { id } = req.body;
+
+        if(!id) return res.status(400).json({ message: "Id is required to get a user's name." });
+
+        try {
+            const user = await User.findById(id);
+            if (!user) return res.status(404).json({ message: "User not found." });
+
+            res.status(200).json({ name: user.name });
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+    }
 }
 
 export default UserController;

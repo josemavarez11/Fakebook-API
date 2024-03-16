@@ -11,5 +11,6 @@ postRouter.delete("/delete/:postId", authMiddleware, PostController.delete);
 postRouter.post("/create", authMiddleware, PostController.create);
 postRouter.put("/updateBody", authMiddleware, PostController.updateBody);
 postRouter.put("/updateImages", authMiddleware, PostController.updateImages);
+postRouter.post("/getAllByUserId", authMiddleware, PostController.getAllByUserId);
 
 export default postRouter;

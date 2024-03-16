@@ -105,7 +105,7 @@ class FriendController {
             const friendship = await Friend.findOne({ $or: [{ applicant: id, requested: friend }, { applicant: friend, requested: id }], accepted: true });
             if (!friendship) return res.status(404).json({ message: "Friendship not found." });
 
-            await friendship.delete();
+            await friendship.deleteOne();
 
             return res.status(200).json({ message: "Friendship deleted successfully." });
         } catch (error) {
